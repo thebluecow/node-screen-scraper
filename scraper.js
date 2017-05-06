@@ -3,18 +3,18 @@ const file = require('./js/file.js');
 const http = require('http');
 // directory where csv will be saved. Called in osmosis.js
 const directory = './data';
+// base url
 const url = 'http://shirts4mike.com';
 let message = '';
-
-let shirts = [];
 
 // connect to the shirts4mike site and call osmosis
 function connect(url) {
 	
 	try {
 		const request = http.get(url, response => {
-			
+												
 			switch (response.statusCode) {
+				// call for scrape method if everything checks out
 				case 200:
 					osmosis.scrape(url, directory);
 					break;
@@ -30,10 +30,17 @@ function connect(url) {
 					const error = new Error(message);
 					file.log(error);
 			}
+			
 		});
+		
+		request.on('error', function(error){
+			// if the http.get method returns an error, log it
+			error.message = `There’s been an unexpected error. Cannot connect to ${url}`;
+			file.log(error);
+        });
 	}
 	catch (error) {
-		// print any errors
+		// print any errors that weren't caught above
 		file.log(error);
 	}	
 }

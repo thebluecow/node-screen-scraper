@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
+// create directory if it doesn't exist
 function createDirectory(directory) {
 	try {
     	fs.mkdirSync(directory)
@@ -9,6 +10,7 @@ function createDirectory(directory) {
   	}   	
 }
 
+// log error message
 function log(error) {
 	
 	console.log(error.message);
