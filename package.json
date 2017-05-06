@@ -1,0 +1,16 @@
+{
+  "name": "node-screen-scraper",
+  "version": "0.0.1",
+  "description": "a node application that gets html content and saves to a csv in the ./data directory",
+  "main": "scraper.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node scraper.js"
+  },
+  "author": "scott bline",
+  "license": "MIT",
+  "dependencies": {
+    "fast-csv": "^2.4.0",
+    "osmosis": "^1.1.4"
+  }
+}
