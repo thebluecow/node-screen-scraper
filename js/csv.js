@@ -6,7 +6,7 @@ function writeToCSV(directory, objects) {
 	// set date constant to construct file name
 	const date = new Date();
 	
-	let file_name = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDay()}.csv`;
+	let file_name = `${date.getFullYear()}-${date.getMonth() + 1}-${date.toString().split(' ')[2]}.csv`;
 	
 	// check if directory exists. If not, create it
 	file.create(directory);
