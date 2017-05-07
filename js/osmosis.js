@@ -6,13 +6,15 @@ const csv = require('./csv.js');
 const file = require('./file.js');
 
 function scrape(url, directory) {
-	// append to passed url
-	let shirt_url = url += '/shirts.php';
 	const shirts = [];
 	const time = new Date().toString().substring(4, 24);
 	
 	osmosis
-	.get(shirt_url)
+	.get(url)
+	// find the shirt.php href and follow
+	.find('div.header > div.wrapper > ul.nav > li.shirts')
+    .follow('@href')
+	// find the links to each individual shirt
 	.find('ul.products > li > a')
 	// set url key with href value
 	.set('url', '@href')
